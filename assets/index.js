@@ -353,8 +353,9 @@ function sendTo(page) {
             break;
     }
 }
+
 function checkLoginPassword(pass) {
-    const h = "kawa1234";
+    const h = "kawa123";
     return pass === h;
 }
 
