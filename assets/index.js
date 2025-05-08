@@ -353,6 +353,10 @@ function sendTo(page) {
             break;
     }
 }
+function checkLoginPassword(pass) {
+    const h = "kawa1234";
+    return pass === h;
+}
 
 var guide = document.querySelector(".guide_holder");
 guide.addEventListener('click', () => {
