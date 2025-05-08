@@ -154,6 +154,8 @@
             const error = document.getElementById('error');
             const overlay = document.getElementById('loginOverlay');
 
+            if (checkLoginPassword(password)) {
+                overlay.style.display = 'none';
                 localStorage.setItem('isLoggedIn', 'true');
                 window.location.href = 'card.html';
             } else {
