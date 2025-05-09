@@ -157,7 +157,6 @@
             if (checkLoginPassword(password)) {
                 overlay.style.display = 'none';
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'card.html';
             } else {
                 error.style.display = 'block';
                 const igRedirect = document.querySelector('.ig-redirect');
