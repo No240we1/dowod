@@ -73,15 +73,10 @@ for (var key of params.keys()){
 }
 
 // Get image from URL parameters
-const userImage = localStorage.getItem('userImage');
-document.querySelector(".id_own_image").style.backgroundImage = userImage ? `url(${userImage})` : '';
-
-// If no image in localStorage, check URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has('image')) {
     const imageUrl = urlParams.get('image');
     document.querySelector(".id_own_image").style.backgroundImage = `url(${imageUrl})`;
-    localStorage.setItem('userImage', imageUrl);
 }
 
 var birthday = data['birthday'];
