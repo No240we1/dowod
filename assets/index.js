@@ -1,4 +1,3 @@
-
 const themeToggle = document.querySelector('.theme-toggle');
 const themePanel = document.querySelector('.theme-panel');
 
@@ -14,10 +13,10 @@ document.querySelectorAll('.theme-option').forEach(option => {
     option.addEventListener('click', () => {
         // Usuń aktywną klasę z wszystkich opcji
         document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
-        
+
         // Dodaj aktywną klasę do klikniętej opcji
         option.classList.add('active');
-        
+
         // Zastosuj motyw
         const theme = option.getAttribute('data-theme');
         applyTheme(theme);
@@ -26,7 +25,7 @@ document.querySelectorAll('.theme-option').forEach(option => {
 
 function applyTheme(theme) {
     const root = document.documentElement;
-    
+
     switch(theme) {
         case 'dark':
             root.style.setProperty('--main-color', '#ffffff');
@@ -123,15 +122,13 @@ fileUpload.addEventListener('change', async (event) => {
 
 input.addEventListener('input', (event) => {
     const imgurUrl = event.target.value;
-    if (imgurUrl.includes('imgur.com')) {
-        // Clear previous image from localStorage
-        localStorage.removeItem('userImage');
-        input.setAttribute("selected", imgurUrl);
-        
-        // Show preview
-        previewImage.src = imgurUrl;
-        previewModal.style.display = 'flex';
-    }
+        if (imgurUrl.includes('imgur.com')) {
+            input.setAttribute("selected", imgurUrl);
+
+            // Show preview
+            previewImage.src = imgurUrl;
+            previewModal.style.display = 'flex';
+        }
 });
 
 closePreview.addEventListener('click', () => {
@@ -163,11 +160,11 @@ document.querySelector(".clear-btn").addEventListener('click', () => {
         var input = element.querySelector(".input");
         input.value = '';
     });
-    
+
     document.querySelectorAll(".date_input").forEach((element) => {
         element.value = '';
     });
-    
+
     // Clear all localStorage data including image
     localStorage.clear();
     localStorage.clear();
@@ -253,7 +250,7 @@ document.querySelector(".go").addEventListener('click', () => {
     var empty = [];
     var params = new URLSearchParams();
     params.set("sex", sex)
-    
+
     const imageInput = document.querySelector("#image");
     if (!imageInput.value || !imageInput.value.includes('imgur.com')){
         empty.push(imageInput.parentElement);
@@ -306,32 +303,11 @@ function isEmpty(value){
 }
 
 function forwardToId(params){
-    const imageData = params.get('image');
-    
-    if (imageData) {
-        localStorage.setItem('userImage', imageData);
-        params.delete('image');
-    }
-    
-    // Save form data to localStorage
-    document.querySelectorAll(".input_holder").forEach((element) => {
-        const input = element.querySelector(".input");
-        if (input && input.value) {
-            localStorage.setItem(input.id, input.value);
-        }
-    });
-    
     location.href = "./id.html?" + params.toString();
 }
 
 // Load saved form data when page loads
 window.addEventListener('load', () => {
-    document.querySelectorAll(".input_holder").forEach((element) => {
-        const input = element.querySelector(".input");
-        if (input && localStorage.getItem(input.id)) {
-            input.value = localStorage.getItem(input.id);
-        }
-    });
 });
 
 function sendTo(page) {
